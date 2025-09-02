@@ -1,10 +1,13 @@
+
 import { AbstractControl, FormArray, ValidationErrors, ValidatorFn } from '@angular/forms';
+
 export function existeElementoNoArray(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const arr = control as FormArray;
     return arr && arr.length > 0 ? null : { requiredArray: true };
   };
 }
+
 export function cpfCnpjValidator(): ValidatorFn {
   const onlyDigits = (v: string) => (v || '').replace(/\D/g, '');
   return (control: AbstractControl): ValidationErrors | null => {
@@ -16,22 +19,7 @@ export function cpfCnpjValidator(): ValidatorFn {
   };
 }
 
-
-
 /** Aceita 'YYYYMMDD', 'YYYY-MM-DD', 'DD/MM/YYYY' e retorna 'YYYY-MM-DD'. */
-  let m;
-  if (m := yyyymmdd.exec(v)) {
-    const y = parseInt(m[1], 10), mo = parseInt(m[2], 10), d = parseInt(m[3], 10);
-    return valid(y, mo, d) ? `${y}-${pad(mo)}-${pad(d)}` : null
-  }
-  if (m := ddmmyyyy.exec(v)) {
-    const d = parseInt(m[1], 10), mo = parseInt(m[2], 10), y = parseInt(m[3], 10);
-    return valid(y, mo, d) ? `${y}-${pad(mo)}-${pad(d)}` : null
-  }
-  return null;
-}
-
-
 export function normalizarData(input: string | null | undefined): string | null {
   if (!input) return null;
   const v = ('' + input).trim();
