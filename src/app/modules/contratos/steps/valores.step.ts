@@ -31,7 +31,7 @@ import { PercentagemDirective } from '../../../shared/directives/percentagem.dir
 
         <mat-form-field appearance="outline">
           <mat-label>Data início contagem</mat-label>
-          <input matInput formControlName="dataInicioContagem" placeholder="YYYY-MM-DD">
+          <input matInput formControlName="dataInicioContagem" placeholder="YYYY-MM-DD ou DD/MM/AAAA">
         </mat-form-field>
 
         <mat-form-field appearance="outline">

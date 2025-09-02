@@ -5,13 +5,14 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { IdentificacaoStepComponent } from './steps/identificacao.step';
 import { PartesStepComponent } from './steps/partes.step';
 import { ObrigacoesStepComponent } from './steps/obrigacoes.step';
 import { ValoresStepComponent } from './steps/valores.step';
 import { FiscalizacaoStepComponent } from './steps/fiscalizacao.step';
 import { ContratosApi } from '../../shared/services/contratos.api';
-import { existeElementoNoArray } from '../../shared/validators/validators';
+import { existeElementoNoArray, dataValidaValidator, normalizarData } from '../../shared/validators/validators';
 import type { ContratoCreate } from '../../shared/models';
 
 @Component({
@@ -28,13 +29,14 @@ import type { ContratoCreate } from '../../shared/models';
 export class ContratosPageComponent {
   private fb = inject(FormBuilder);
   private api = inject(ContratosApi);
+  private snack = inject(MatSnackBar);
   contratosCount = 0;
 
   form = this.fb.group({
     identificacao: this.fb.group({
       numero: [null, Validators.required],
       ano: [new Date().getFullYear(), [Validators.required]],
-      dataAssinatura: [null, Validators.required],
+      dataAssinatura: [null, [Validators.required, dataValidaValidator()]],
       objeto: [null, [Validators.required, Validators.maxLength(500)]],
       fornecedorId: [null, Validators.required],
       endereco: this.fb.group({
@@ -59,7 +61,7 @@ export class ContratosPageComponent {
       reajuste: this.fb.group({
         indiceId: [null, Validators.required],
         periodoMes: [12, [Validators.required, Validators.min(1), Validators.max(60)]],
-        dataInicioContagem: [null, Validators.required],
+        dataInicioContagem: [null, [Validators.required, dataValidaValidator()]],
         percentual: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
       }),
     }),
@@ -76,7 +78,7 @@ export class ContratosPageComponent {
       valores.addControl('reajuste', this.fb.group({
         indiceId: [null, Validators.required],
         periodoMes: [12, [Validators.required, Validators.min(1), Validators.max(60)]],
-        dataInicioContagem: [null, Validators.required],
+        dataInicioContagem: [null, [Validators.required, dataValidaValidator()]],
         percentual: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
       }));
     }
@@ -96,19 +98,28 @@ export class ContratosPageComponent {
   get obrigacoesArray() { return this.form.get('obrigacoes') as FormArray; }
 
   salvarRascunho() {
-    const payload = this.form.getRawValue();
-    this.api.createContrato(payload as any).subscribe(() => {
+    const payload = this.form.getRawValue() as any;
+    if (payload?.identificacao?.dataAssinatura)
+      payload.identificacao.dataAssinatura = normalizarData(payload.identificacao.dataAssinatura);
+    if (payload?.valores?.reajuste?.dataInicioContagem)
+      payload.valores.reajuste.dataInicioContagem = normalizarData(payload.valores.reajuste.dataInicioContagem);
+    this.api.createContrato(payload).subscribe(() => {
       this.api.listContratos().subscribe(list => this.contratosCount = list.length);
+      this.snack.open('Rascunho salvo com sucesso.', 'OK', { duration: 2500 });
     });
-    alert('Rascunho salvo no json-server.');
   }
 
   enviarAprovacao() {
     this.form.patchValue({ status: 'enviado' });
-    const payload = this.form.getRawValue();
-    this.api.createContrato(payload as any).subscribe(() => {
+    const payload = this.form.getRawValue() as any;
+    if (payload?.identificacao?.dataAssinatura)
+      payload.identificacao.dataAssinatura = normalizarData(payload.identificacao.dataAssinatura);
+    if (payload?.valores?.reajuste?.dataInicioContagem)
+      payload.valores.reajuste.dataInicioContagem = normalizarData(payload.valores.reajuste.dataInicioContagem);
+    this.api.createContrato(payload).subscribe(() => {
       this.api.listContratos().subscribe(list => this.contratosCount = list.length);
+      this.snack.open('Contrato enviado para aprovação e salvo.', 'OK', { duration: 2500 });
     });
-    alert('Contrato enviado para aprovação (mock) e persistido no json-server.');
   }
 }
+

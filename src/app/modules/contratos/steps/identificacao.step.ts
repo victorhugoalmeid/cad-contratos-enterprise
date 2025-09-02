@@ -24,7 +24,7 @@ import { Fornecedor } from '../../../shared/models';
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Data de Assinatura</mat-label>
-      <input matInput formControlName="dataAssinatura" placeholder="YYYY-MM-DD">
+      <input matInput formControlName="dataAssinatura" placeholder="YYYY-MM-DD ou DD/MM/AAAA">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Objeto</mat-label>
