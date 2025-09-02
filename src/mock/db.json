@@ -1,0 +1,58 @@
+{
+  "fornecedores": [
+    {
+      "id": 1,
+      "tipo": "PJ",
+      "cpfCnpj": "12345678000190",
+      "nomeRazaoSocial": "Acme Ltda"
+    },
+    {
+      "id": 2,
+      "tipo": "PF",
+      "cpfCnpj": "93445518122",
+      "nomeRazaoSocial": "Cecília Eliane Emilly das Neves"
+    }
+  ],
+  "pessoas_prepostos": [
+    {
+      "id": 721,
+      "nomeCompleto": "Preposto Exemplo",
+      "papelResponsabilidade": {
+        "id": 9,
+        "nome": "Preposto",
+        "flagFiscal": "N"
+      }
+    },
+    {
+      "id": 101,
+      "nomeCompleto": "Fiscal A",
+      "papelResponsabilidade": {
+        "id": 1,
+        "nome": "Fiscal",
+        "flagFiscal": "S"
+      }
+    },
+    {
+      "id": 102,
+      "nomeCompleto": "Representante B",
+      "papelResponsabilidade": {
+        "id": 2,
+        "nome": "Representante",
+        "flagFiscal": "N"
+      }
+    }
+  ],
+  "acordos-minimos": [
+    {
+      "id": 1,
+      "nome": "Disponibilidade 99,5%",
+      "descricao": "Uptime mensal mínimo."
+    },
+    {
+      "id": 2,
+      "nome": "Tempo de Resposta < 2h",
+      "descricao": "Incidentes críticos."
+    }
+  ],
+  "contratos": []
+}

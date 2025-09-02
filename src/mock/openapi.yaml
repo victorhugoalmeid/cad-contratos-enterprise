@@ -1,0 +1,168 @@
+openapi: 3.1.0
+info:
+  title: Cadastro de Contratos API (Mock)
+  version: 1.2.0
+servers:
+  - url: http://localhost:4010
+paths:
+  /fornecedores:
+    get:
+      summary: Lista fornecedores
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Fornecedor'
+  /pessoas/prepostos:
+    get:
+      summary: Lista pessoas com papel Preposto por contrato
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PessoaContrato'
+  /acordos-minimos:
+    get:
+      summary: Lista acordos mínimos de serviço
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AcordoMinimo'
+  /contratos:
+    get:
+      summary: Lista contratos (documentação; persistência via json-server)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContratoCreate'
+    post:
+      summary: Cria contrato (rascunho ou definitivo)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContratoCreate'
+      responses:
+        '201':
+          description: Criado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContratoCreate'
+components:
+  schemas:
+    Endereco:
+      type: object
+      properties:
+        cep: { type: [string, "null"] }
+        uf: { type: [string, "null"] }
+        cidade: { type: [string, "null"] }
+        logradouro: { type: [string, "null"] }
+        numero: { type: [string, "null"] }
+        complemento: { type: [string, "null"] }
+        bairro: { type: [string, "null"] }
+    Fornecedor:
+      type: object
+      required: [id, tipo, cpfCnpj, nomeRazaoSocial]
+      properties:
+        id: { type: integer }
+        tipo: { type: string, enum: [PF, PJ] }
+        cpfCnpj: { type: string }
+        nomeRazaoSocial: { type: string }
+        endereco: { $ref: '#/components/schemas/Endereco' }
+    PessoaContrato:
+      type: object
+      required: [id, nomeCompleto]
+      properties:
+        id: { type: integer }
+        nomeCompleto: { type: string }
+        papelResponsabilidade:
+          type: object
+          properties:
+            id: { type: integer }
+            nome: { type: string, enum: [Preposto, Fiscal, Representante] }
+            flagFiscal: { type: string, enum: [S, N] }
+    AcordoMinimo:
+      type: object
+      required: [id, nome]
+      properties:
+        id: { type: integer }
+        nome: { type: string }
+        descricao: { type: string }
+    ContratoCreate:
+      type: object
+      required: [identificacao, valores, status]
+      properties:
+        identificacao:
+          type: object
+          required: [numero, ano, dataAssinatura, objeto, fornecedorId]
+          properties:
+            numero: { type: string }
+            ano: { type: integer }
+            dataAssinatura: { type: string }
+            objeto: { type: string, maxLength: 500 }
+            fornecedorId: { type: integer }
+            endereco: { $ref: '#/components/schemas/Endereco' }
+        partes:
+          type: object
+          properties:
+            fiscais:
+              type: array
+              items: { type: integer }
+            prepostoId: { type: integer }
+            representantes:
+              type: array
+              items: { type: integer }
+        obrigacoes:
+          type: array
+          items: { type: string }
+        valores:
+          type: object
+          required: [valorGlobal, permiteReajuste, reajuste]
+          properties:
+            valorGlobal: { type: number }
+            permiteReajuste: { type: boolean }
+            reajuste:
+              type: object
+              required: [indiceId, periodoMes, dataInicioContagem, percentual]
+              properties:
+                indiceId: { type: [integer, string] }
+                periodoMes: { type: integer }
+                dataInicioContagem: { type: string }
+                percentual: { type: number }
+        fiscalizacao:
+          type: object
+          properties:
+            acordos:
+              type: array
+              items: { $ref: '#/components/schemas/AcordoMinimo' }
+            glosas:
+              type: array
+              items:
+                type: object
+                required: [descricaoGlosa, acordoId]
+                properties:
+                  descricaoGlosa: { type: string }
+                  acordoId: { type: integer }
+        status:
+          type: string
+          enum: [rascunho, enviado, aprovado, reprovado]

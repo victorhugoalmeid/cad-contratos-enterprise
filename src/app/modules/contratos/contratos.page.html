@@ -1,0 +1,60 @@
+<mat-card class="container">
+  <h2>Cadastro de Contratos</h2>
+  <p>Total de contratos (mock): {{ contratosCount }}</p>
+  <mat-horizontal-stepper linear>
+    <mat-step [stepControl]="form.get('identificacao')">
+      <ng-template matStepLabel>Identificação</ng-template>
+      <ng-container *ngIf="form.get('identificacao') as id">
+        <app-identificacao-step [group]="id"></app-identificacao-step>
+      </ng-container>
+      <div class="actions">
+        <button mat-button matStepperNext color="primary" [disabled]="form.get('identificacao')?.invalid">Próximo</button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="form.get('partes')">
+      <ng-template matStepLabel>Partes</ng-template>
+      <ng-container *ngIf="form.get('partes') as partes">
+        <app-partes-step [group]="partes"></app-partes-step>
+      </ng-container>
+      <div class="actions">
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button matStepperNext color="primary">Próximo</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Obrigações & Anexos</ng-template>
+      <ng-container *ngIf="form.get('obrigacoes') as obrigacoes">
+        <app-obrigacoes-step [array]="obrigacoes"></app-obrigacoes-step>
+      </ng-container>
+      <div class="actions">
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button matStepperNext color="primary">Próximo</button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="form.get('valores')">
+      <ng-template matStepLabel>Valores & Reajuste</ng-template>
+      <ng-container *ngIf="form.get('valores') as valores">
+        <app-valores-step [group]="valores"></app-valores-step>
+      </ng-container>
+      <div class="actions">
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button matStepperNext color="primary" [disabled]="form.get('valores')?.invalid">Próximo</button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="form.get('fiscalizacao')">
+      <ng-template matStepLabel>Fiscalização & SLA</ng-template>
+      <ng-container *ngIf="form.get('fiscalizacao') as fis">
+        <app-fiscalizacao-step [group]="fis"></app-fiscalizacao-step>
+      </ng-container>
+      <div class="actions">
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-raised-button color="accent" (click)="salvarRascunho()">Salvar Rascunho</button>
+        <button mat-raised-button color="primary" (click)="enviarAprovacao()">Enviar para Aprovação</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-card>
