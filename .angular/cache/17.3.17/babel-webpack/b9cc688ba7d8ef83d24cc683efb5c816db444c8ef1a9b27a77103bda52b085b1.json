@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const pendingChangesGuard = (component, currentRoute, currentState, nextState) => {\n  const dirty = !!component?.form?.dirty;\n  if (!dirty) return true;\n  return confirm('Existem alterações não salvas. Deseja realmente sair?');\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

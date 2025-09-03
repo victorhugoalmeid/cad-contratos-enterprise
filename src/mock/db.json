@@ -54,5 +54,297 @@
       "descricao": "Incidentes críticos."
     }
   ],
-  "contratos": []
+  "contratos": [
+    {
+      "identificacao": {
+        "numero": "777",
+        "ano": 2025,
+        "dataAssinatura": "1992-03-07",
+        "objeto": "teste 1",
+        "fornecedorId": 2,
+        "endereco": {
+          "cep": null,
+          "uf": null,
+          "cidade": null,
+          "logradouro": null,
+          "numero": null,
+          "complemento": null,
+          "bairro": null
+        }
+      },
+      "partes": {
+        "fiscais": [
+          101
+        ],
+        "prepostoId": 721,
+        "representantes": [
+          102
+        ]
+      },
+      "obrigacoes": [
+        "Obrigação"
+      ],
+      "valores": {
+        "valorGlobal": 1000,
+        "permiteReajuste": true,
+        "reajuste": {
+          "indiceId": "12",
+          "periodoMes": 12,
+          "dataInicioContagem": "2025-05-01",
+          "percentual": 1
+        }
+      },
+      "fiscalizacao": {
+        "acordos": [
+          {
+            "id": 1,
+            "nome": "Disponibilidade 99,5%",
+            "descricao": "Uptime mensal mínimo."
+          }
+        ],
+        "glosas": [
+          {
+            "descricaoGlosa": "Desc Glosa",
+            "acordoId": 35
+          }
+        ]
+      },
+      "status": "rascunho",
+      "id": 1
+    },
+    {
+      "identificacao": {
+        "numero": "777",
+        "ano": 2025,
+        "dataAssinatura": "1992-03-07",
+        "objeto": "teste 1",
+        "fornecedorId": 2,
+        "endereco": {
+          "cep": null,
+          "uf": null,
+          "cidade": null,
+          "logradouro": null,
+          "numero": null,
+          "complemento": null,
+          "bairro": null
+        }
+      },
+      "partes": {
+        "fiscais": [
+          101
+        ],
+        "prepostoId": 721,
+        "representantes": [
+          102
+        ]
+      },
+      "obrigacoes": [
+        "Obrigação"
+      ],
+      "valores": {
+        "valorGlobal": 1000,
+        "permiteReajuste": true,
+        "reajuste": {
+          "indiceId": "12",
+          "periodoMes": 12,
+          "dataInicioContagem": "2025-05-01",
+          "percentual": 1
+        }
+      },
+      "fiscalizacao": {
+        "acordos": [
+          {
+            "id": 1,
+            "nome": "Disponibilidade 99,5%",
+            "descricao": "Uptime mensal mínimo."
+          }
+        ],
+        "glosas": [
+          {
+            "descricaoGlosa": "Desc Glosa",
+            "acordoId": 35
+          }
+        ]
+      },
+      "status": "enviado",
+      "id": 2
+    },
+    {
+      "identificacao": {
+        "numero": "777",
+        "ano": 2025,
+        "dataAssinatura": "1992-03-07",
+        "objeto": "teste 1",
+        "fornecedorId": 2,
+        "endereco": {
+          "cep": null,
+          "uf": null,
+          "cidade": null,
+          "logradouro": null,
+          "numero": null,
+          "complemento": null,
+          "bairro": null
+        }
+      },
+      "partes": {
+        "fiscais": [
+          101
+        ],
+        "prepostoId": 721,
+        "representantes": [
+          102
+        ]
+      },
+      "obrigacoes": [
+        "Obrigação"
+      ],
+      "valores": {
+        "valorGlobal": 1000,
+        "permiteReajuste": true,
+        "reajuste": {
+          "indiceId": "12",
+          "periodoMes": 12,
+          "dataInicioContagem": "2025-05-01",
+          "percentual": 1
+        }
+      },
+      "fiscalizacao": {
+        "acordos": [
+          {
+            "id": 1,
+            "nome": "Disponibilidade 99,5%",
+            "descricao": "Uptime mensal mínimo."
+          }
+        ],
+        "glosas": [
+          {
+            "descricaoGlosa": "Desc Glosa",
+            "acordoId": 35
+          }
+        ]
+      },
+      "status": "enviado",
+      "id": 3
+    },
+    {
+      "identificacao": {
+        "numero": "2025-1",
+        "ano": 2025,
+        "dataAssinatura": "1992-03-07",
+        "objeto": "obj",
+        "fornecedorId": 1,
+        "endereco": {
+          "cep": null,
+          "uf": null,
+          "cidade": null,
+          "logradouro": null,
+          "numero": null,
+          "complemento": null,
+          "bairro": null
+        }
+      },
+      "partes": {
+        "fiscais": [
+          101,
+          102
+        ],
+        "prepostoId": 721,
+        "representantes": [
+          101,
+          102
+        ]
+      },
+      "obrigacoes": [
+        "nv",
+        "nv2"
+      ],
+      "valores": {
+        "valorGlobal": 0.61,
+        "permiteReajuste": true,
+        "reajuste": {
+          "indiceId": "2",
+          "periodoMes": 12,
+          "dataInicioContagem": "2023-03-01",
+          "percentual": "0.75"
+        }
+      },
+      "fiscalizacao": {
+        "acordos": [
+          {
+            "id": 1,
+            "nome": "Disponibilidade 99,5%",
+            "descricao": "Uptime mensal mínimo."
+          }
+        ],
+        "glosas": [
+          {
+            "descricaoGlosa": "k",
+            "acordoId": 123
+          }
+        ]
+      },
+      "status": "rascunho",
+      "id": 4
+    },
+    {
+      "identificacao": {
+        "numero": "2025-1",
+        "ano": 2025,
+        "dataAssinatura": "1992-03-07",
+        "objeto": "obj",
+        "fornecedorId": 1,
+        "endereco": {
+          "cep": null,
+          "uf": null,
+          "cidade": null,
+          "logradouro": null,
+          "numero": null,
+          "complemento": null,
+          "bairro": null
+        }
+      },
+      "partes": {
+        "fiscais": [
+          101,
+          102
+        ],
+        "prepostoId": 721,
+        "representantes": [
+          101,
+          102
+        ]
+      },
+      "obrigacoes": [
+        "nv",
+        "nv2"
+      ],
+      "valores": {
+        "valorGlobal": 0.61,
+        "permiteReajuste": true,
+        "reajuste": {
+          "indiceId": "2",
+          "periodoMes": 12,
+          "dataInicioContagem": "2023-03-01",
+          "percentual": "0.75"
+        }
+      },
+      "fiscalizacao": {
+        "acordos": [
+          {
+            "id": 1,
+            "nome": "Disponibilidade 99,5%",
+            "descricao": "Uptime mensal mínimo."
+          }
+        ],
+        "glosas": [
+          {
+            "descricaoGlosa": "k",
+            "acordoId": 123
+          }
+        ]
+      },
+      "status": "enviado",
+      "id": 5
+    }
+  ]
 }

@@ -9,6 +9,6 @@ import { RouterLink } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, RouterLink, MatToolbarModule, MatIconModule, MatButtonModule, MatSnackBarModule],
-  template: `<mat-toolbar color="primary"><span>Cadastro de Contratos (Enterprise Case)</span><span class="spacer"></span><a mat-button routerLink="/contratos/lista">Meus Contratos</a><a mat-button href="https://github.com" target="_blank">GitHub</a></mat-toolbar><router-outlet/>`,
+  template: `<mat-toolbar color="primary"><span>Cadastro de Contratos (Enterprise Case)</span><span class="spacer"></span><a mat-button routerLink="/contratos/lista">Meus Contratos</a><a mat-button href="http://github.com/victorhugoalmeid" target="_blank">GitHub</a></mat-toolbar><router-outlet/>`,
   styles: [`.spacer{flex:1}`]
 }) export class AppComponent {}

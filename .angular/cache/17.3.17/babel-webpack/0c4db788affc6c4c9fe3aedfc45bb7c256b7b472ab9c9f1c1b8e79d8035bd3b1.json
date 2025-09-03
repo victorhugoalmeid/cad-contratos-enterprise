@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const routes = [{\n  path: '',\n  redirectTo: 'contratos',\n  pathMatch: 'full'\n}, {\n  path: 'contratos',\n  loadChildren: () => import('./modules/contratos/contratos.routes').then(m => m.CONTRATOS_ROUTES)\n}, {\n  path: '**',\n  redirectTo: 'contratos'\n}];","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
