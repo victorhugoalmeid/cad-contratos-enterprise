@@ -1,5 +1,5 @@
 
-# Cadastro de Contratos — Enterprise (Angular 17) — FIXED
+# Cadastro de Contratos — Enterprise (Angular 17)
 
 Inclui:
 - Steps completos (Identificação, Partes, Obrigações, Valores, Fiscalização)
